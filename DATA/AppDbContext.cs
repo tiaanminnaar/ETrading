@@ -9,6 +9,7 @@ namespace Data
             IdentityUserClaim<int>, AppUserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>,
             IdentityUserToken<int>>(options)
     {
+        public DbSet<Photos> Photos { get; set; }
         protected override void OnModelCreating(ModelBuilder Builder)
         {
             base.OnModelCreating(Builder);

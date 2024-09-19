@@ -15,13 +15,13 @@ builder.Services.AddIdentityService(builder.Configuration);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
-    c.IgnoreObsoleteActions();
-    c.IgnoreObsoleteProperties();
-    c.CustomSchemaIds(type => type.FullName);
-});
+//builder.Services.AddSwaggerGen(c =>
+//{
+//    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+//    c.IgnoreObsoleteActions();
+//    c.IgnoreObsoleteProperties();
+//    c.CustomSchemaIds(type => type.FullName);
+//});
 
 var app = builder.Build();
 
@@ -44,19 +44,19 @@ app.MapControllers();
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
-try
-{
-    var context = services.GetRequiredService<AppDbContext>();
-    var userManager = services.GetRequiredService<UserManager<AppUser>>();
-    var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
-    await context.Database.MigrateAsync();
-    await context.Database.ExecuteSqlRawAsync("DELETE FROM [Connections]");
-    await Seed.SeedUsers(userManager, roleManager);
-}
-catch (Exception ex)
-{
-    var logger = services.GetRequiredService<ILogger<Program>>();
-    logger.LogError(ex, "An erroraccoured during migration");
-}
+//try
+//{
+//    var context = services.GetRequiredService<AppDbContext>();
+//    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+//    var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
+//    await context.Database.MigrateAsync();
+//    await context.Database.ExecuteSqlRawAsync("DELETE FROM [Connections]");
+//    await Seed.SeedUsers(userManager, roleManager);
+//}
+//catch (Exception ex)
+//{
+//    var logger = services.GetRequiredService<ILogger<Program>>();
+//    logger.LogError(ex, "An erroraccoured during migration");
+//}
 
 app.Run();
