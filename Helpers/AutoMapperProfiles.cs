@@ -22,9 +22,9 @@ namespace Helpers
             CreateMap<MemberUpdateDto, AppUser>();
             CreateMap<RegisterDto, AppUser>();
             CreateMap<string, DateOnly>().ConvertUsing(s => DateOnly.Parse(s));
-            CreateMap<DateTime, DateTime>().ConvertUsing(d => DateTime.SpecifyKind(d, DateTimeKind.Utc));
-            CreateMap<DateTime?, DateTime?>().ConvertUsing(d => d.HasValue
-                ? DateTime.SpecifyKind(d.Value, DateTimeKind.Utc) : null);
+            //CreateMap<DateTime, DateTime>().ConvertUsing(d => DateTime.SpecifyKind(d, DateTimeKind.Utc));
+            //CreateMap<DateTime?, DateTime?>().ConvertUsing(d => d.HasValue
+            //    ? DateTime.SpecifyKind(d.Value, DateTimeKind.Utc) : null);
         }
     }
 }
